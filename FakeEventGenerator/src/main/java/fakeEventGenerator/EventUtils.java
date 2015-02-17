@@ -33,7 +33,7 @@ import java.util.Random;
 public class EventUtils{
         private HashMap<String, String> headers = new HashMap<>();
         private String VDCNAME = "host";
-        private String Field= "field";
+        private String Field;
         private byte[] data;
         private Random random;
         
@@ -41,9 +41,9 @@ public class EventUtils{
         /*
         @return Event build from atomic parameters
         */    
-        public Event makeEvent(byte[] data, int nCampos ){
+        public Event makeEvent( int nCampos ){
             Event event = new SimpleEvent();
-            event.setBody(data);
+            event.setBody(makeData());
             event.setHeaders(makeHeaders(nCampos));
             return event;
         }
@@ -57,6 +57,10 @@ public class EventUtils{
             return data;
         }
         
+        /*
+        @return hashmap,
+        @param int , fields in value of hashmap
+        */
         public HashMap makeHeaders(int nCampos){
             headers.put(makeVDCname(), makeField(nCampos));
             return headers;
@@ -74,9 +78,17 @@ public class EventUtils{
         return String, make String composed of concatenated  Filed+i
         */
         public String makeField(int nCampos){
-            for (int i = 0; i < nCampos; i ++){
-                Field = "Field"+ i + ",";
-            }
+            String [] Chain = new String[nCampos];
+            Field = "";
+            for (int i = 0; i < nCampos; i++){
+                    if (i == nCampos - 1){
+                        Chain [i] = "field" + i;
+                        Field += Chain[i];                     
+                    } else {
+                         Chain [i] = "field" + i  +",";
+                         Field += Chain[i];
+                    }
+                }
             return Field;
         }
 }
