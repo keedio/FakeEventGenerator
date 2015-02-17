@@ -48,6 +48,15 @@ public class EventUtils{
             return event;
         }
         
+        public Event makeDummyEvent(){
+            Event dummyEvent = new SimpleEvent();
+            dummyEvent.setBody( new String("contenido").getBytes());
+            HashMap<String,String> dummyHeader = new HashMap<>();
+            dummyHeader.put("clave", "campo");
+            dummyEvent.setHeaders(dummyHeader);
+            return dummyEvent;
+        }
+        
         /*
         @retunr byte [] paylod of fake event, can be anything
         */

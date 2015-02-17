@@ -21,7 +21,6 @@
 package feederInterceptor;
 
 import org.apache.flume.interceptor.Interceptor; 
-//import org.apache.flume.interceptor.Interceptor.Builder;
 import  org.apache.flume.Event;
 import org.apache.flume.Context;
 import java.util.List;
