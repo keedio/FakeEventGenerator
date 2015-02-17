@@ -25,19 +25,32 @@ import org.apache.flume.interceptor.Interceptor;
 import  org.apache.flume.Event;
 import org.apache.flume.Context;
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+
+import fakeEventGenerator.EventUtils;
+
 /**
  * 
  * @author Luis Lázaro <lalazaro@keedio.com>
  */
 public class FeederInterceptor implements Interceptor{
     
+    private int CAMPOS = 10; //número de campos a incluir para enriquecer
+    private EventUtils  eventUtil = new EventUtils();
     
     @Override
     public void initialize(){}
     
     public Event  intercept(Event event){
-        //feed header;
-        return event;
+        Map<String,String> poorHeader = new HashMap<>();
+        Map<String,String> richHeader = new HashMap<>();
+        poorHeader =  event.getHeaders();
+        for ( String key : poorHeader.keySet()){
+            richHeader.put( key + "," +  eventUtil.makeVDCname(), poorHeader.get(key) + "," + eventUtil.makeField(CAMPOS));
+            event.setHeaders( richHeader );
+        }   
+        return event; //enriched event
     }
     
   public List<Event> intercept(List<Event> events) {
