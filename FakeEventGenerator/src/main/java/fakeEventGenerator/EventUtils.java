@@ -52,7 +52,7 @@ public class EventUtils{
             Event dummyEvent = new SimpleEvent();
             dummyEvent.setBody( new String("contenido").getBytes());
             HashMap<String,String> dummyHeader = new HashMap<>();
-            dummyHeader.put("clave", "campo");
+            dummyHeader.put("clave", "valor");
             dummyEvent.setHeaders(dummyHeader);
             return dummyEvent;
         }
@@ -80,7 +80,7 @@ public class EventUtils{
         @return String, make random name of host
         */
         public String makeVDCname(){
-            return VDCNAME + random.nextInt();
+            return VDCNAME;  // + random.nextInt();
         }
         
         /*
