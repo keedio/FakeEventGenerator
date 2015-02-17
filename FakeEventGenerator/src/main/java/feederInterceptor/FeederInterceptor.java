@@ -35,7 +35,7 @@ import fakeEventGenerator.EventUtils;
  */
 public class FeederInterceptor implements Interceptor{
     
-    private int CAMPOS = 3; //número de campos a incluir para enriquecer
+    private int CAMPOS = 5; //número de campos a incluir para enriquecer
     private EventUtils  eventUtil = new EventUtils();
     
     @Override

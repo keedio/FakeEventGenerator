@@ -49,7 +49,7 @@ public class FeederInterceptorTest {
      */
     @Test
     public void testIntercept_Event_key() {
-        System.out.println("intercept");
+        System.out.println("intercept_key");
         Event event = new EventUtils().makeDummyEvent();
         FeederInterceptor instance = new FeederInterceptor();
         String expResult = "clave,host";
@@ -58,9 +58,23 @@ public class FeederInterceptorTest {
         for (String key : resultEvent.getHeaders().keySet()){
            result = key;
         }
+        System.out.println(result);
         assertEquals(expResult, result);
     }
 
-    
+    @Test
+    public void testIntercept_Event_value() {
+        System.out.println("intercept_value");
+        Event event = new EventUtils().makeDummyEvent();
+        FeederInterceptor instance = new FeederInterceptor();
+        String expResult = "valor,field0,field1,field2,field3,field4";
+        Event resultEvent = instance.intercept(event);
+        String result = null;
+        for (String key : resultEvent.getHeaders().keySet()){
+           result = resultEvent.getHeaders().get(key);
+        }
+         System.out.println(result);
+        assertEquals(expResult, result);
+    }
     
 }
