@@ -5,4 +5,4 @@ Package FakeEventGenerator generates two different events, a dummy event with a 
 The initial event (poor event in terms of informational data in headers) will be added an second key and a total of 'n' fields in the value of the map. Header of the poor event is passed through feederIntercept returning an enriched event with new header maintaining previous header:
 example
 -------
-previous header  <key,value> ---> feederInterceptor ----> new header <(key,key2),(value,field0,field1,field2)>
+previous header  <(key),(value)> ---> feederInterceptor ----> new header <(key,key2),(value,field0,field1,field2)>
