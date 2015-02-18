@@ -12,6 +12,8 @@ previous header  <(key),(value)> ---> feederInterceptor ----> new header <(key,k
 # AdderInterceptor
 This interceptor adds a secon pair of <key, value> to the initial event's header.
 -
-example
+example:
+
 previous header <(key0),(value)> ----> adderInterceptor ----> new header
+
 [ <(key0),(value)>, <(host),(field0,field1,field2,...)>]
